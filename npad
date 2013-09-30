@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# ---- Notepad For Bash ---- #
+# ----   By: Lucidity   ---- #
+
+NoteDATE=`date +%m%d%y`
+noteDir=/home/$USER/Notes
+noteFile=$NoteDATE.npad
+todaysNote=$noteDir/$noteFile
+
+#Check if note directory exists, if not create it
+if [[ ! -d $noteDir ]]
+    then
+	echo "Begining Setup ..."
+	echo ""
+	echo "Create Program Directory"
+	echo ""
+	mkdir $noteDir
+	echo "$noteDir Created"
+	echo ""
+fi
+
+if [[ ! -e $todaysNote ]]
+then
+    touch $todaysNote
+	if [[ -e $todaysNote ]]
+	    then
+    	    echo "Created Note File $todaysNote"
+		newFile=1
+	    else "Error Unable To Create Note"
+	fi
+else newFile=0
+fi
+
+#Add Note Header To New File
+
+if [[ $newFile = 1 ]]
+    then
+	echo "################################" >> $todaysNote
+	echo "# "$(date)" #" >> $todaysNote
+	echo "################################" >> $todaysNote
+
+#Add New Entry Tab
+    
+    else
+	 nowTime=`date +%H:%M`
+	echo "Title"
+	echo ""
+	read entryName
+	echo "" >> $todaysNote
+	echo "################################" >> $todaysNote
+	echo "$nowTime $entryName          " >> $todaysNote
+	echo "################################" >> $todaysNote
+
+fi
+
+#Add while read line loop to take user input 
+	echo "Enter notes followed by [ CTRl+D ]"	
+	while read line
+   	do
+	echo "$line" >> $todaysNote
+	done
+
+exit
