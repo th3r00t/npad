@@ -6,6 +6,7 @@ source config.sh
 #Check if note directory exists, if not create it
 if [[ ! -d $noteDir ]]
     then
+	$firstRun = 1;
 	echo "Begining Setup ..."
 	echo ""
 	echo "Create Program Directory"
@@ -14,6 +15,30 @@ if [[ ! -d $noteDir ]]
 	echo "$noteDir Created"
 	echo ""
 fi
+###################################################
+#		    Build UI			  #
+#                                                 #
+#                                                 #
+#                                                 #
+###################################################
+echo "    Welcome to nPad - A notepad for bash"
+echo "   Developed By Developers For Developers"
+echo ""
+echo "#############################################"
+echo "#            | Selection Menu |             #"
+echo "#-------------------------------------------#"
+echo "#                                           #"
+echo "# n -Start A New Note                       #"
+echo "# o -Open A Previous Note                   #"
+echo "# l -List Note Files                        #"
+echo "# v -View Configuration File                #"
+echo "#                                           #"
+echo "# -->To run without ui start with -s        #"
+echo "#-------------------------------------------#"
+echo "#          | Enter Your Selection |         #"
+echo "#############################################"
+echo ""
+read $menuSelection
 
 if [[ ! -e $todaysNote ]]
 then
