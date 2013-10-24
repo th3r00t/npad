@@ -2,12 +2,7 @@
 
 # ---- Notepad For Bash ---- #
 # ----   By: Lucidity   ---- #
-
-NoteDATE=`date +%m%d%y`
-noteDir=/home/$USER/Notes
-noteFile=$NoteDATE.npad
-todaysNote=$noteDir/$noteFile
-
+source config.sh
 #Check if note directory exists, if not create it
 if [[ ! -d $noteDir ]]
     then
